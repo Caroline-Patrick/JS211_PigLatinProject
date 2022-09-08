@@ -11,11 +11,37 @@ const rl = readline.createInterface({
 });
 
 
-const pigLatin = (word) => {
 
-  // Your code here
+const pigLatin = (word) => {
+  // Make sure word is trimmed and put to lowercase first
+  word = word.trim();
+  word = word.toLowerCase();
+  // Set your vowels array to compare to word
+      
+      let vowels = ['a', 'e', 'i', 'o', 'u']
+      let wordArray = word.split('')
+      let finalArray = []
+  
+  for (let index = 0; index < 3; index++) {
+    console.log(wordArray[index])
+    
+    if(vowels.includes(wordArray[index])) {
+      console.log(index)
+      
+      if(index === 0){
+        let theWord = word + 'yay'
+        finalArray.push(theWord)
+      }
+    }
+  }
+  const answer = finalArray.join(' ');
+  console.log(answer)
+  return answer
 
 }
+
+
+// could we also do an if/else statement?
 
 // the first function called in the program to get an input from the user
 // to run the function use the command: node main.js
@@ -67,5 +93,7 @@ if (typeof describe === 'function') {
 
 // break your code into pieces and focus on one piece at a time...
 // 1. if word begins with a vowel send to one function: adds "yay"
-// 2. if word begins with a consonant send to another function: splices off beginning, returns word with new ending.
+// 
+//2. if word begins with a consonant send to another function: splices off beginning, returns word with new ending.
+
 // 3. if multiple words, create array of words, loop over them, sending them to different functions and creating a new array with the new words.
