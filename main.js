@@ -12,33 +12,96 @@ const rl = readline.createInterface({
 
 
 
-const pigLatin = (word) => {
-  // Make sure word is trimmed and put to lowercase first
-  word = word.trim();
-  word = word.toLowerCase();
-  // Set your vowels array to compare to word
-      
-      let vowels = ['a', 'e', 'i', 'o', 'u']
-      let wordArray = word.split('')
-      let finalArray = []
-  
-  for (let index = 0; index < 3; index++) {
-    console.log(wordArray[index])
+// const pigLatin = (word) => {
+//   // Make sure word is trimmed and put to lowercase first
+//   word = word.trim();
+//   word = word.toLowerCase();
+//   // Set your vowels array to compare to word
+//   let vowels = ['a', 'e', 'i', 'o', 'u']
+//   let wordArray = word.split('')
+//   let finalArray = []
+//   for (let index = 0; index < 2; index++) {
+//     console.log(wordArray[index])
+//     if(vowels.includes(wordArray[index])) {
+//       console.log(index)
+//         if(index === 0){
+//           let theWord = word + 'yay'
+//           finalArray.push(theWord)
+//         }
+//           // else if (index === 1) {
+//           //   basicPigLatin(wordArray)
+//           // }
+//     } else {
+//       let length = wordArray.length;
+//       let twoLetters = wordArray.slice(0,2);
+//       let restWord = wordArray.slice(length-3, length-1)
+//     let complexWord = restWord+ twoLetters
     
-    if(vowels.includes(wordArray[index])) {
-      console.log(index)
-      
-      if(index === 0){
-        let theWord = word + 'yay'
-        finalArray.push(theWord)
-      }
+//     finalArray = complexWord
+//     console.log(finalArray)
+//     }
+//   }
+//   const answer = finalArray.join(' ');
+//   console.log(answer)
+//   return answer
+// }
+
+
+const pigLatin = (w) => {
+  let word = w.trim();
+  let wordFormatted = word.toLowerCase();
+
+  let wordArray = wordFormatted.split('');
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+
+  console.log (wordArray)
+
+  for (let i=0; i<2; i++){
+    console.log(wordArray[i])
+    if(vowels.includes(wordArray[i])){
+     
+      if (i === 0) {
+        let theVowelWord = wordFormatted + 'yay';
+        console.log(theVowelWord)
+        return theVowelWord
+
+
+        // now if vowel is at index [1], remove first letter (a consonant) and push it to end of word w/ 'ay'
+      } else if (i===1) {
+        let firstLetter = wordArray.splice(0,1,"")
+        console.log(firstLetter)
+        console.log(wordArray)
+        console.log(wordFormatted)
+
+       let lengthOfArray = wordArray.push(firstLetter)
+        console.log(lengthOfArray)
+        console.log(wordArray)
+
+        let joinedWord = wordArray.join("");
+        console.log(joinedWord)
+        const finalNormalWord = joinedWord + "ay"
+        console.log(finalNormalWord)
+        return finalNormalWord
+      } 
+      //end of normal consonant word
     }
   }
-  const answer = finalArray.join(' ');
-  console.log(answer)
-  return answer
-
 }
+
+
+
+
+// basicPigLatin = (wordArray) => {
+//   console.log(wordArray)
+// }
+  // else if (!vowels.includes(wordArray[index]))
+  // {
+  //   let finalArrayTwo = []
+  //   let letterOne = wordArray[0]
+  //   let letterTwo = wordArray[1]
+  //   let complexWord = wordArray + letterOne + letterTwo
+  //   finalArrayTwo.push(complexWord)
+  // }
 
 
 // could we also do an if/else statement?
