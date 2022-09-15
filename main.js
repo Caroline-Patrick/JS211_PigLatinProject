@@ -46,46 +46,41 @@ const rl = readline.createInterface({
 //   return answer
 // }
 
-
-const pigLatin = (w) => {
-  let word = w.trim();
-  let wordFormatted = word.toLowerCase();
-
-  let wordArray = wordFormatted.split('');
-  let vowels = ['a', 'e', 'i', 'o', 'u'];
-
-  console.log (wordArray)
-
-  for (let i=0; i<2; i++){
-    console.log(wordArray[i])
-    if(vowels.includes(wordArray[i])){
-     
-      if (i === 0) {
-        let theVowelWord = wordFormatted + 'yay';
-        console.log(theVowelWord)
-        return theVowelWord
-
-
-        // now if vowel is at index [1], remove first letter (a consonant) and push it to end of word w/ 'ay'
-      } else if (i===1) {
-        let firstLetter = wordArray.splice(0,1,"")
-        console.log(firstLetter)
-        console.log(wordArray)
-        console.log(wordFormatted)
-
-       let lengthOfArray = wordArray.push(firstLetter)
-        console.log(lengthOfArray)
-        console.log(wordArray)
-
-        let joinedWord = wordArray.join("");
-        console.log(joinedWord)
-        const finalNormalWord = joinedWord + "ay"
-        console.log(finalNormalWord)
-        return finalNormalWord
-      } 
-      //end of normal consonant word
+const pigLatin = (word) => {
+  // Make sure word is trimmed and put to lowercase first
+  word = word.trim()
+  word = word.toLowerCase()
+  // Set your vowels array to compare to word
+  let vowels = ['a', 'e', 'i', 'o', 'u']
+  let wordArray = word.split('')
+  let finalArray = []
+  let bucketArray = []
+  for (let index = 0; index < 2; index++) {
+    if(vowels.includes(wordArray[index])) {
+      if(index === 0){
+        let theWord = word + 'yay'
+        finalArray.push(theWord)
+      } else {
+        let theWord = word.slice(index, word.length) + word.slice(0, index) + 'ay';
+        finalArray.push(theWord);
+      }
+    } else if (!vowels.includes(wordArray[index])) {
+      let bucket = wordArray[index]
+      bucketArray.push(bucket)
+      if (bucketArray.length === 2) {
+        let otherArray = bucketArray.join("")
+        console.log(otherArray)
+        let theWord = word.slice(2, word.length)
+                    + word.slice(2, index)
+                    + otherArray
+                    + 'ay'
+        finalArray.push(theWord)
+      }
     }
   }
+  const answer = finalArray.join();
+  // console.log(answer)
+  return answer
 }
 
 
