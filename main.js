@@ -52,7 +52,7 @@ const pigLatin = (word) => {
   word = word.toLowerCase()
   // Set your vowels array to compare to word
   let vowels = ['a', 'e', 'i', 'o', 'u']
-  let wordArray = word.split('')
+  let wordArray = word.split('') 
   let finalArray = []
   let bucketArray = []
   for (let index = 0; index < 2; index++) {
@@ -79,7 +79,7 @@ const pigLatin = (word) => {
     }
   }
   const answer = finalArray.join();
-  // console.log(answer)
+  console.log(answer)
   return answer
 }
 

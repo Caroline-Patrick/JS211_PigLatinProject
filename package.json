@@ -28,5 +28,6 @@
     "mocha": "^10.0.0",
     "postcss-html": "^0.34.0",
     "stylelint": "^14.11.0"
-  }
+  },
+  "type": "module"
 }
